@@ -12,108 +12,163 @@
 <body>
 
 <div class="container">
-    <h1>VISA PARA TODOS</h1>
-    <p class="subtitle">Asesoría sencilla, rápida y por WhatsApp.</p>
-
-    <!-- Intro Section -->
-    <div class="section">
-        <div class="checkbox-wrapper">
-            <input type="checkbox" id="habeas" />
-            <label for="habeas">Acepto que la información que escriba será enviada por WhatsApp y no se almacena en esta página.</label>
-        </div>
-        <button id="btnHabeas">Continuar</button>
-    </div>
-
-    <!-- Form Section -->
-    <div id="formSection" class="hidden section">
-        <h3>Formulario rápido</h3>
+    
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+        <h1>VISA PARA TODOS</h1>
+        <p class="subtitle">Asesoría sencilla y segura por WhatsApp para visas de turismo, estudio y trabajo.</p>
         
-        <div class="form-group">
-            <label for="visa">¿Qué necesitas?</label>
-            <select id="visa">
-                <option value="Estados Unidos">Visa Estados Unidos</option>
-                <option value="Canadá">Visa Canadá</option>
-                <option value="Inglaterra (UK)">Visa Inglaterra (UK)</option>
-                <option value="Australia">Visa Australia</option>
-                <option value="Europa (trabajo/pareja/estudio)">Visa Europa (trabajo/pareja/estudio)</option>
-                <option value="Asesoria30">Asesoría de 30 minutos</option>
-                <option value="SoloWhatsApp">Solo quiero tu WhatsApp</option>
-            </select>
+        <ul class="hero-benefits">
+            <li>✅ Te explico paso a paso qué documentos necesitas.</li>
+            <li>✅ Ahorra tiempo, errores y dinero.</li>
+            <li>✅ Atención directa por WhatsApp, sin enredos.</li>
+        </ul>
+
+        <button id="btnStartScroll" class="btn-primary-action">Quiero empezar por WhatsApp</button>
+    </header>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section">
+        <h3>¿En qué te ayudo?</h3>
+        <div class="services-grid">
+            <div class="service-item">🇺🇸 🇨🇦 🇬🇧 <strong>Turismo</strong> <br><small>USA, Canadá, UK, Australia</small></div>
+            <div class="service-item">🇪🇺 <strong>Europa</strong> <br><small>Trabajo, Estudio, Pareja</small></div>
+            <div class="service-item">🎓 <strong>Estudiantes</strong> <br><small>Au Pair, Cursos</small></div>
+            <div class="service-item">👨‍👩‍👧‍👦 <strong>Familia</strong> <br><small>Reagrupación</small></div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="steps-section">
+        <h3>¿Cómo funciona?</h3>
+        <div class="step-card">
+            <span class="step-number">1</span>
+            <p><strong>Me cuentas tu caso</strong><br>Usa el formulario de abajo para escribirme.</p>
+        </div>
+        <div class="step-card">
+            <span class="step-number">2</span>
+            <p><strong>Te explico todo</strong><br>Vemos documentos, opciones y costos.</p>
+        </div>
+        <div class="step-card">
+            <span class="step-number">3</span>
+            <p><strong>Tú decides</strong><br>Si te gusta, empezamos tu trámite.</p>
+        </div>
+    </section>
+
+    <!-- FORM TOOL SECTION -->
+    <div id="tool-anchor"></div>
+    <section class="tool-section">
+        <h3>Formulario rápido para WhatsApp</h3>
+        <p class="tool-intro">Selecciona lo que necesitas y la página creará el mensaje perfecto para enviarme.</p>
+
+        <!-- Intro Section (Habeas) -->
+        <div class="section form-wrapper">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="habeas" />
+                <label for="habeas">Acepto que la información que escriba será enviada por WhatsApp y no se almacena en esta página.</label>
+            </div>
+            <button id="btnHabeas">Empezar formulario</button>
         </div>
 
-        <div class="form-group">
-            <label for="acompanantes">¿Viajarás con acompañantes?</label>
-            <select id="acompanantes">
-                <option value="No">No</option>
-                <option value="Sí">Sí</option>
-            </select>
+        <!-- Form Section -->
+        <div id="formSection" class="hidden section form-wrapper">
+            
+            <div class="form-group">
+                <label for="visa">¿Qué necesitas?</label>
+                <select id="visa">
+                    <option value="Estados Unidos">Visa Estados Unidos</option>
+                    <option value="Canadá">Visa Canadá</option>
+                    <option value="Inglaterra (UK)">Visa Inglaterra (UK)</option>
+                    <option value="Australia">Visa Australia</option>
+                    <option value="Europa (trabajo/pareja/estudio)">Visa Europa (trabajo/pareja/estudio)</option>
+                    <option value="Asesoria30">Asesoría de 30 minutos</option>
+                    <option value="SoloWhatsApp">Solo quiero tu WhatsApp</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="acompanantes">¿Viajarás con acompañantes?</label>
+                <select id="acompanantes">
+                    <option value="No">No</option>
+                    <option value="Sí">Sí</option>
+                </select>
+            </div>
+
+            <div id="numAcompanantesSection" class="hidden form-group">
+                <label for="numAcompanantes">Número de acompañantes:</label>
+                <select id="numAcompanantes">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4+">4+</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="proposito">Propósito del viaje:</label>
+                <select id="proposito">
+                    <option value="Turismo">Turismo</option>
+                    <option value="Visitar familia">Visitar familia</option>
+                    <option value="Trabajo temporal">Trabajo temporal</option>
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Reagrupación familiar">Reagrupación familiar</option>
+                    <option value="Esposo/Esposa/Pareja">Esposo / Esposa / Pareja</option>
+                    <option value="Au Pair">Au Pair</option>
+                    <option value="Nómada digital">Nómada digital</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+
+            <div id="paisSection" class="hidden form-group">
+                <label for="pais">País destino (Europa):</label>
+                <select id="pais">
+                    <option value="España">España</option>
+                    <option value="Francia">Francia</option>
+                    <option value="Italia">Italia</option>
+                    <option value="Alemania">Alemania</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Países Bajos">Países Bajos</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha estimada de viaje:</label>
+                <input type="date" id="fecha">
+            </div>
+
+            <button id="btnGenerar">Generar mensaje</button>
         </div>
 
-        <div id="numAcompanantesSection" class="hidden form-group">
-            <label for="numAcompanantes">Número de acompañantes:</label>
-            <select id="numAcompanantes">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4+">4+</option>
-            </select>
+        <!-- Message Section -->
+        <div id="mensajeSection" class="hidden section form-wrapper">
+            <h3>Tu mensaje para WhatsApp</h3>
+            <p class="tool-intro">Aquí está tu mensaje listo. Revísalo, cópialo y envíamelo.</p>
+            
+            <div class="form-group">
+                <textarea id="mensaje" readonly></textarea>
+            </div>
+
+            <p style="text-align: center; margin-bottom: 16px; color: var(--text-main);"><strong>¿Es correcta la información?</strong></p>
+            <button id="btnCopiar">Sí, está correcto</button>
+            <button id="btnEditar">No, quiero corregir</button>
+
+            <div id="copiadoMsg" class="hidden success-message">
+                Mensaje copiado ✔️ Ahora abre tu WhatsApp y pégalo.
+            </div>
+
+            <a id="whatsLink" class="hidden" href="#" target="_blank">
+                <button>Abrir WhatsApp</button>
+            </a>
         </div>
+    </section>
 
-        <div class="form-group">
-            <label for="proposito">Propósito del viaje:</label>
-            <select id="proposito">
-                <option value="Turismo">Turismo</option>
-                <option value="Visitar familia">Visitar familia</option>
-                <option value="Trabajo temporal">Trabajo temporal</option>
-                <option value="Estudiante">Estudiante</option>
-                <option value="Reagrupación familiar">Reagrupación familiar</option>
-                <option value="Esposo/Esposa/Pareja">Esposo / Esposa / Pareja</option>
-                <option value="Au Pair">Au Pair</option>
-                <option value="Nómada digital">Nómada digital</option>
-                <option value="Otro">Otro</option>
-            </select>
-        </div>
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <p>🔒 No guardo tus datos en esta página.<br>Todo el proceso se maneja directamente por tu WhatsApp.</p>
+        <p class="footer-brand">Visa Para Todos &copy; 2024</p>
+    </footer>
 
-        <div id="paisSection" class="hidden form-group">
-            <label for="pais">País destino (Europa):</label>
-            <select id="pais">
-                <option value="España">España</option>
-                <option value="Francia">Francia</option>
-                <option value="Italia">Italia</option>
-                <option value="Alemania">Alemania</option>
-                <option value="Portugal">Portugal</option>
-                <option value="Países Bajos">Países Bajos</option>
-                <option value="Otro">Otro</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="fecha">Fecha estimada de viaje:</label>
-            <input type="date" id="fecha">
-        </div>
-
-        <button id="btnGenerar">Generar mensaje</button>
-    </div>
-
-    <!-- Message Section -->
-    <div id="mensajeSection" class="hidden section">
-        <h3>Tu mensaje</h3>
-        <div class="form-group">
-            <textarea id="mensaje" readonly></textarea>
-        </div>
-
-        <p style="text-align: center; margin-bottom: 16px; color: var(--text-main);"><strong>¿Es todo lo anterior correcto?</strong></p>
-        <button id="btnCopiar">Sí, está correcto</button>
-        <button id="btnEditar">No, quiero corregir</button>
-
-        <div id="copiadoMsg" class="hidden success-message">
-            Mensaje copiado ✔️ Ahora abre tu WhatsApp y pégalo.
-        </div>
-
-        <a id="whatsLink" class="hidden" href="#" target="_blank">
-            <button>Abrir WhatsApp</button>
-        </a>
-    </div>
 </div>
 
 <script src="app.js" defer></script>

@@ -4,6 +4,7 @@
     --primary-hover: #0a1930;
     
     --accent-color: #0056b3; /* Bright Blue for active states */
+    --accent-light: #E0F2FE; /* Light blue background for cards */
     
     --success-color: #10B981; /* Modern Emerald Green */
     --success-hover: #059669;
@@ -49,65 +50,193 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Main Container as a Floating Card */
+/* Main Container */
 .container {
     background: var(--bg-card);
-    padding: 48px;
+    padding: 0; /* Reset padding for full width feel inside card */
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-card);
     width: 100%;
-    max-width: 540px; /* Optically better width for reading */
-    margin-top: 40px;
+    max-width: 600px;
+    margin-top: 20px;
     margin-bottom: 60px;
-    border: 1px solid rgba(255,255,255,0.8); /* Subtle highlight */
+    border: 1px solid rgba(255,255,255,0.8);
+    overflow: hidden; /* Clip content to radius */
 }
 
-/* Typography */
+/* === HERO SECTION === */
+.hero-section {
+    padding: 40px 32px;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+}
+
 h1 {
     font-size: 32px;
     color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     margin-top: 0;
-    font-weight: 700;
-    letter-spacing: -0.03em; /* Tighter tracking for headlines */
+    font-weight: 800;
+    letter-spacing: -0.03em;
 }
 
 .subtitle {
-    text-align: center;
     color: var(--text-muted);
-    margin-bottom: 40px;
-    font-size: 16px;
+    margin-bottom: 24px;
+    font-size: 18px;
+    line-height: 1.5;
     font-weight: 400;
+}
+
+.hero-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.hero-benefits li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.btn-primary-action {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 18px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    border: none;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(17, 34, 64, 0.2);
+}
+
+.btn-primary-action:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(17, 34, 64, 0.3);
+}
+
+/* === SERVICES SECTION === */
+.services-section {
+    padding: 32px;
+    background-color: #F9FAFB;
 }
 
 h3 {
     color: var(--primary-color);
     font-size: 20px;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
-    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-weight: 700;
     letter-spacing: -0.02em;
+    text-align: center;
 }
 
-/* Sections & Animation */
-.section {
-    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
 
-@keyframes slideUpFade {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.service-item {
+    background: white;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
-.hidden {
-    display: none !important;
+.service-item strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: var(--text-main);
 }
 
-/* Forms */
-.form-group {
+.service-item small {
+    color: var(--text-muted);
+    line-height: 1.2;
+    display: block;
+}
+
+/* === STEPS SECTION === */
+.steps-section {
+    padding: 32px;
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.step-card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 16px;
+}
+
+.step-card:last-child {
+    margin-bottom: 0;
+}
+
+.step-number {
+    background-color: var(--accent-light);
+    color: var(--primary-color);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-card p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.step-card strong {
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* === TOOL / FORM SECTION === */
+.tool-section {
+    padding: 32px;
+    background-color: #F0F9FF; /* Very light blue to distinguish as a tool area */
+}
+
+.tool-intro {
+    text-align: center;
+    font-size: 15px;
+    color: var(--text-muted);
     margin-bottom: 24px;
+    margin-top: -10px;
+}
+
+.form-wrapper {
+    background: white;
+    padding: 24px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+/* Forms styling reused from previous design but scoped */
+.form-group {
+    margin-bottom: 20px;
 }
 
 label {
@@ -116,7 +245,6 @@ label {
     font-weight: 500;
     color: var(--text-main);
     font-size: 14px;
-    letter-spacing: 0.01em;
 }
 
 select, input[type="text"], input[type="date"], textarea {
@@ -124,14 +252,13 @@ select, input[type="text"], input[type="date"], textarea {
     padding: 14px 16px;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    font-size: 16px; /* iOS Zoom prevention */
+    font-size: 16px;
     font-family: var(--font-family);
     background-color: #fff;
     color: var(--text-main);
     box-shadow: var(--shadow-input);
     transition: all 0.2s ease-in-out;
     appearance: none;
-    line-height: 1.5;
 }
 
 /* Select Custom Arrow */
@@ -142,11 +269,10 @@ select {
     padding-right: 48px;
 }
 
-/* Focus States */
 select:focus, input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(17, 34, 64, 0.1); /* Soft ring */
+    box-shadow: 0 0 0 4px rgba(17, 34, 64, 0.1);
 }
 
 textarea {
@@ -155,23 +281,13 @@ textarea {
     background-color: #FAFAFA;
 }
 
-/* Custom Checkbox */
+/* Checkbox */
 .checkbox-wrapper {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    padding: 20px;
-    background: #F9FAFB; /* Lighter gray */
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-.checkbox-wrapper:hover {
-    background: #F3F4F6;
-    border-color: #D1D5DB;
 }
 
 .checkbox-wrapper input[type="checkbox"] {
@@ -188,7 +304,7 @@ textarea {
     font-weight: 400;
     color: var(--text-muted);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.4;
     cursor: pointer;
 }
 
@@ -202,44 +318,28 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-top: 16px;
-    letter-spacing: 0.01em;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Primary Buttons */
 #btnHabeas, #btnGenerar {
     background-color: var(--primary-color);
     color: white;
-    box-shadow: 0 4px 12px rgba(17, 34, 64, 0.2);
+    margin-top: 0;
 }
 
 #btnHabeas:hover, #btnGenerar:hover {
     background-color: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(17, 34, 64, 0.25);
 }
 
-#btnHabeas:active, #btnGenerar:active {
-    transform: translateY(0);
-}
-
-/* Success Button */
 #btnCopiar {
     background-color: var(--success-color);
     color: white;
     margin-top: 12px;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
 }
 
 #btnCopiar:hover {
     background-color: var(--success-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
 }
 
-/* Secondary/Edit Button */
 #btnEditar {
     background-color: transparent;
     color: var(--text-muted);
@@ -253,31 +353,46 @@ button {
     background-color: #fff;
 }
 
-/* WhatsApp Button */
 #whatsLink button {
     background-color: var(--whatsapp-color);
     color: white;
-    margin-top: 28px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    font-weight: 700;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    gap: 10px;
 }
 
-#whatsLink button:hover {
-    background-color: #1ebc57;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(37, 211, 102, 0.4);
+/* Footer */
+.footer-section {
+    padding: 32px;
+    text-align: center;
+    background-color: white;
+    border-top: 1px solid var(--border-color);
 }
 
-#whatsLink {
-    text-decoration: none;
-    display: block;
+.footer-section p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin: 0 0 10px 0;
 }
 
-/* Success Message */
+.footer-brand {
+    font-weight: 600;
+    color: var(--primary-color) !important;
+    margin-top: 16px !important;
+}
+
+/* Animations */
+.hidden { display: none !important; }
+
+.section { animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .success-message {
     background-color: #ECFDF5;
     color: #065F46;
@@ -288,54 +403,33 @@ button {
     font-weight: 500;
     border: 1px solid #A7F3D0;
     animation: slideUpFade 0.4s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
 }
 
-/* Mobile Optimization */
+/* Mobile Tweaks */
 @media (max-width: 640px) {
     body {
-        background-color: #fff;
         padding: 0;
+        background-color: white;
     }
     
     .container {
         box-shadow: none;
         border: none;
         border-radius: 0;
-        padding: 32px 24px;
-        margin-top: 0;
-        margin-bottom: 0;
+        margin: 0;
         max-width: 100%;
     }
-
-    h1 {
-        font-size: 28px;
-        margin-top: 12px;
-    }
-
-    .subtitle {
-        font-size: 15px;
-        margin-bottom: 32px;
+    
+    .hero-section { padding: 32px 24px; }
+    .services-section { padding: 24px; }
+    .steps-section { padding: 24px; }
+    .tool-section { padding: 24px 16px; } /* Less padding for form area on mobile */
+    
+    h1 { font-size: 28px; }
+    
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack services on small screens */
     }
     
-    button {
-        padding: 18px; /* Large touch target */
-        border-radius: var(--radius-lg); /* Softer on mobile */
-    }
-    
-    /* Full width inputs on mobile feel better */
-    select, input[type="text"], input[type="date"], textarea {
-        font-size: 16px;
-        padding: 16px;
-        background-color: #F9FAFB; /* Slight contrast on white mobile bg */
-    }
-    
-    /* Less gap on mobile */
-    .form-group {
-        margin-bottom: 20px;
-    }
+    button { padding: 18px; }
 }
-

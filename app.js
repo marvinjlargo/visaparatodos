@@ -12,6 +12,23 @@ const btnCopiar = document.getElementById('btnCopiar');
 const btnEditar = document.getElementById('btnEditar');
 const copiadoMsg = document.getElementById('copiadoMsg');
 const whatsLink = document.getElementById('whatsLink');
+const btnStartScroll = document.getElementById('btnStartScroll');
+
+// Smooth scroll helper
+const scrollToElement = (element) => {
+    window.scrollTo({
+        top: element.offsetTop - 20, // Slight offset for padding
+        behavior: 'smooth'
+    });
+};
+
+// Landing page scroll button
+if (btnStartScroll) {
+    btnStartScroll.onclick = () => {
+        const toolAnchor = document.getElementById('tool-anchor');
+        if (toolAnchor) scrollToElement(toolAnchor);
+    };
+}
 
 // Add smooth fade-in for sections
 const fadeInSection = (element) => {
@@ -31,7 +48,9 @@ btnHabeas.onclick = () => {
     if (!habeas.checked) return alert("Debes aceptar el Habeas Data.");
     fadeInSection(formSection);
     // Scroll slightly to show the form comfortably
-    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+        formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
 };
 
 acompanantes.onchange = () => {
@@ -78,10 +97,7 @@ btnGenerar.onclick = () => {
     
     // Smooth scroll to the message section
     setTimeout(() => {
-        window.scrollTo({ 
-            top: document.body.scrollHeight, 
-            behavior: 'smooth' 
-        });
+        mensajeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 100);
 };
 
@@ -100,4 +116,3 @@ btnEditar.onclick = () => {
     mensajeSection.classList.add('hidden');
     copiadoMsg.classList.add('hidden');
 };
-

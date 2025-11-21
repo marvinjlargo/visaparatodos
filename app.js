@@ -12,6 +12,7 @@ const btnCopiar = document.getElementById('btnCopiar');
 const btnEditar = document.getElementById('btnEditar');
 const copiadoMsg = document.getElementById('copiadoMsg');
 const whatsLink = document.getElementById('whatsLink');
+const finalMicrocopy = document.getElementById('finalMicrocopy');
 const btnStartScroll = document.getElementById('btnStartScroll');
 
 // Smooth scroll helper
@@ -45,7 +46,7 @@ const fadeInSection = (element) => {
 };
 
 btnHabeas.onclick = () => {
-    if (!habeas.checked) return alert("Debes aceptar el Habeas Data para continuar.");
+    if (!habeas.checked) return alert("Por favor marca la casilla para confirmar que entiendes el proceso.");
     fadeInSection(formSection);
     // Scroll slightly to show the form comfortably
     setTimeout(() => {
@@ -70,29 +71,33 @@ visa.onchange = () => {
 };
 
 btnGenerar.onclick = () => {
-    let text = `Hola, Visa Para Todos.%0A%0A`;
+    let text = `Hola, Visa Para Todos. 👋%0A%0A`;
 
     if (visa.value === 'Asesoria30') {
-        text += `Quisiera agendar una asesoría de 30 minutos con ustedes.%0A`;
-        text += `Tema de la consulta: ${proposito.value}%0A`;
-        text += `Fecha estimada (si aplica): ${fecha.value}%0A%0A`;
-        text += `Quedo atento(a) a la disponibilidad y costo. Muchas gracias.`;
+        text += `Me interesa agendar una *asesoría de 30 minutos*.%0A`;
+        text += `Quiero hablar sobre: ${proposito.value}%0A`;
+        text += `Fecha ideal para mí: ${fecha.value ? fecha.value : 'Lo antes posible'}%0A%0A`;
+        text += `¿Me confirmas el precio y cómo pago? Gracias.`;
     } else if (visa.value === 'SoloWhatsApp') {
-        text += `Hola, solo quiero obtener su contacto de WhatsApp para hacer una consulta puntual.%0A%0A`;
-        text += `Mi pregunta es sobre: ${proposito.value}.%0A`;
-        text += `Quedo atento(a). Gracias.`;
+        text += `Vi su página web y tengo una duda rápida sobre: ${proposito.value}.%0A%0A`;
+        text += `Quedo atento a su respuesta.`;
     } else {
-        text += `Me interesa iniciar un trámite con ustedes:%0A%0A`;
-        text += `📋 Tipo de solicitud: ${visa.value}%0A`;
-        text += `✈️ Propósito del viaje: ${proposito.value}%0A`;
-        if (visa.value.includes('Europa')) text += `🌍 País destino: ${pais.value}%0A`;
-        text += `👥 Acompañantes: ${acompanantes.value}%0A`;
-        if (acompanantes.value === 'Sí') text += `   - Número de personas extra: ${numAcompanantes.value}%0A`;
-        text += `📅 Fecha estimada: ${fecha.value}%0A%0A`;
-        text += `Por favor indíquenme qué documentos necesito para empezar. Quedo atento(a).`;
+        text += `Me gustaría que revisen mi caso para un trámite:%0A%0A`;
+        text += `📌 *Trámite:* ${visa.value}%0A`;
+        text += `✈️ *Motivo:* ${proposito.value}%0A`;
+        if (visa.value.includes('Europa')) text += `🌍 *País:* ${pais.value}%0A`;
+        
+        if (acompanantes.value === 'Sí') {
+             text += `👥 *Viajo con:* Familia/Pareja (${numAcompanantes.value} más)%0A`;
+        } else {
+             text += `👤 *Viajo:* Solo(a)%0A`;
+        }
+        
+        text += `📅 *Fecha aprox:* ${fecha.value ? fecha.value : 'Aún no sé'}%0A%0A`;
+        text += `¿Qué documentos necesito para que empecemos? Quedo atento.`;
     }
 
-    // Decode properly
+    // Decode properly for display
     mensaje.value = decodeURIComponent(text.replace(/%0A/g, "\n"));
     
     fadeInSection(mensajeSection);
@@ -107,14 +112,33 @@ btnCopiar.onclick = async () => {
     try {
         await navigator.clipboard.writeText(mensaje.value);
         copiadoMsg.classList.remove('hidden');
-        whatsLink.href = `https://wa.me/12899216257`; // REEMPLAZAR CON TU NÚMERO
+        whatsLink.href = `https://wa.me/573101234567?text=${encodeURIComponent(mensaje.value)}`; // Replace with actual number if known, currently placeholder
+        // NOTE: User instruction implies specific behavior. I kept the generic placeholder or the one in the previous file if it was specific. 
+        // The previous file had a specific number: 12899216257. I will use that one to be safe.
+        whatsLink.href = `https://wa.me/12899216257?text=${encodeURIComponent(mensaje.value)}`;
+        
         whatsLink.classList.remove('hidden');
+        
+        // Auto open if possible (browser block popups usually prevents this without direct click, but we show the button)
+        window.open(whatsLink.href, '_blank');
+
     } catch (err) {
-        alert('No se pudo copiar el texto. Por favor cópialo manualmente.');
+        // Fallback if clipboard fails
+        copiadoMsg.textContent = "No se pudo copiar automático. Por favor selecciona el texto y cópialo.";
+        copiadoMsg.classList.remove('hidden');
+        copiadoMsg.style.backgroundColor = "#FEF2F2";
+        copiadoMsg.style.color = "#991B1B";
+        copiadoMsg.style.borderColor = "#FECACA";
     }
+
+    if (finalMicrocopy) finalMicrocopy.classList.remove('hidden');
 };
 
 btnEditar.onclick = () => {
     mensajeSection.classList.add('hidden');
     copiadoMsg.classList.add('hidden');
+    whatsLink.classList.add('hidden');
+    if (finalMicrocopy) finalMicrocopy.classList.add('hidden');
+    // Scroll back to form
+    formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 };

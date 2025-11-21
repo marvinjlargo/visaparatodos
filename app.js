@@ -45,7 +45,7 @@ const fadeInSection = (element) => {
 };
 
 btnHabeas.onclick = () => {
-    if (!habeas.checked) return alert("Debes aceptar el Habeas Data.");
+    if (!habeas.checked) return alert("Debes aceptar el Habeas Data para continuar.");
     fadeInSection(formSection);
     // Scroll slightly to show the form comfortably
     setTimeout(() => {
@@ -73,21 +73,23 @@ btnGenerar.onclick = () => {
     let text = `Hola, Visa Para Todos.%0A%0A`;
 
     if (visa.value === 'Asesoria30') {
-        text += `Quiero agendar una asesoría de 30 minutos.%0A`;
+        text += `Quisiera agendar una asesoría de 30 minutos con ustedes.%0A`;
         text += `Tema de la consulta: ${proposito.value}%0A`;
-        text += `Fecha estimada para la asesoría: ${fecha.value}%0A%0A`;
-        text += `Por favor indícame disponibilidad y costo.`;
+        text += `Fecha estimada (si aplica): ${fecha.value}%0A%0A`;
+        text += `Quedo atento(a) a la disponibilidad y costo. Muchas gracias.`;
     } else if (visa.value === 'SoloWhatsApp') {
-        text += `Solo quiero obtener tu número de WhatsApp para hacer una consulta rápida.%0A%0A`;
-        text += `Mi pregunta es sobre: ${proposito.value}`;
+        text += `Hola, solo quiero obtener su contacto de WhatsApp para hacer una consulta puntual.%0A%0A`;
+        text += `Mi pregunta es sobre: ${proposito.value}.%0A`;
+        text += `Quedo atento(a). Gracias.`;
     } else {
-        text += `- Tipo de solicitud: ${visa.value}%0A`;
-        text += `- Propósito del viaje: ${proposito.value}%0A`;
-        if (visa.value.includes('Europa')) text += `- País destino: ${pais.value}%0A`;
-        text += `- Acompañantes: ${acompanantes.value}%0A`;
-        if (acompanantes.value === 'Sí') text += `  - Número de acompañantes: ${numAcompanantes.value}%0A`;
-        text += `- Fecha estimada: ${fecha.value}%0A%0A`;
-        text += `Quedo atento(a) para que me indiques los documentos que necesito.`;
+        text += `Me interesa iniciar un trámite con ustedes:%0A%0A`;
+        text += `📋 Tipo de solicitud: ${visa.value}%0A`;
+        text += `✈️ Propósito del viaje: ${proposito.value}%0A`;
+        if (visa.value.includes('Europa')) text += `🌍 País destino: ${pais.value}%0A`;
+        text += `👥 Acompañantes: ${acompanantes.value}%0A`;
+        if (acompanantes.value === 'Sí') text += `   - Número de personas extra: ${numAcompanantes.value}%0A`;
+        text += `📅 Fecha estimada: ${fecha.value}%0A%0A`;
+        text += `Por favor indíquenme qué documentos necesito para empezar. Quedo atento(a).`;
     }
 
     // Decode properly

@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Visa Para Todos | Asesoría de Visas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
         :root {
-            --primary-color: #0A4A82;
-            --primary-hover: #083966;
-            --secondary-color: #f8f9fa;
-            --text-color: #333333;
-            --text-light: #666666;
-            --success-color: #28A745;
+            /* World-Class Palette */
+            --primary-color: #112240; /* Deep Navy Blue - Premium & Trust */
+            --primary-hover: #0a1930;
+            
+            --accent-color: #0056b3; /* Bright Blue for active states */
+            
+            --success-color: #10B981; /* Modern Emerald Green */
+            --success-hover: #059669;
+            
             --whatsapp-color: #25D366;
-            --border-color: #e0e0e0;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-            --radius: 12px;
-            --font-family: 'Inter', sans-serif;
+            
+            --bg-page: #F3F4F6; /* Cool Gray Background */
+            --bg-card: #FFFFFF;
+            
+            --text-main: #1f2937; /* Gray 900 */
+            --text-muted: #6b7280; /* Gray 500 */
+            
+            --border-color: #E5E7EB; /* Gray 200 */
+            --border-focus: #112240;
+            
+            --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --shadow-input: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         * {
@@ -30,207 +46,240 @@
 
         body {
             font-family: var(--font-family);
-            background-color: #f0f4f8;
-            color: var(--text-color);
+            background-color: var(--bg-page);
+            color: var(--text-main);
             margin: 0;
             padding: 20px;
-            line-height: 1.5;
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Better for mobile scrolling than center */
+            align-items: flex-start;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Main Container as a Floating Card */
         .container {
-            background: white;
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
+            background: var(--bg-card);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
             width: 100%;
-            max-width: 600px;
-            margin-top: 20px;
-            margin-bottom: 40px; /* Space at bottom for scrolling */
-            transition: transform 0.3s ease;
+            max-width: 540px; /* Optically better width for reading */
+            margin-top: 40px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255,255,255,0.8); /* Subtle highlight */
         }
 
+        /* Typography */
         h1 {
-            font-size: 28px;
+            font-size: 32px;
             color: var(--primary-color);
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             margin-top: 0;
             font-weight: 700;
-            line-height: 1.2;
+            letter-spacing: -0.03em; /* Tighter tracking for headlines */
         }
 
         .subtitle {
             text-align: center;
-            color: var(--text-light);
-            margin-bottom: 30px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
             font-size: 16px;
+            font-weight: 400;
         }
 
         h3 {
             color: var(--primary-color);
             font-size: 20px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0f4f8;
-            padding-bottom: 10px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
 
+        /* Sections & Animation */
         .section {
-            animation: fadeIn 0.5s ease-in-out;
+            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Forms */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--text-color);
-            font-size: 15px;
+            color: var(--text-main);
+            font-size: 14px;
+            letter-spacing: 0.01em;
         }
 
         select, input[type="text"], input[type="date"], textarea {
             width: 100%;
-            padding: 14px 16px; /* Larger touch target */
+            padding: 14px 16px;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 16px; /* Prevents zoom on iOS */
+            border-radius: var(--radius-md);
+            font-size: 16px; /* iOS Zoom prevention */
             font-family: var(--font-family);
-            transition: border-color 0.2s, box-shadow 0.2s;
             background-color: #fff;
+            color: var(--text-main);
+            box-shadow: var(--shadow-input);
+            transition: all 0.2s ease-in-out;
             appearance: none;
+            line-height: 1.5;
         }
 
-        /* Custom arrow for selects */
+        /* Select Custom Arrow */
         select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
-            background-size: 20px;
-            padding-right: 40px; /* Avoid text overlapping arrow */
+            padding-right: 48px;
         }
 
+        /* Focus States */
         select:focus, input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(10, 74, 130, 0.1);
+            box-shadow: 0 0 0 4px rgba(17, 34, 64, 0.1); /* Soft ring */
         }
 
         textarea {
             resize: vertical;
-            min-height: 120px;
-            background-color: #fafafa;
-            color: #444;
+            min-height: 140px;
+            background-color: #FAFAFA;
         }
 
-        /* Checkbox styling */
+        /* Custom Checkbox */
         .checkbox-wrapper {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 16px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            gap: 14px;
+            padding: 20px;
+            background: #F9FAFB; /* Lighter gray */
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
             cursor: pointer;
-            user-select: none;
+            transition: background-color 0.2s, border-color 0.2s;
         }
         
+        .checkbox-wrapper:hover {
+            background: #F3F4F6;
+            border-color: #D1D5DB;
+        }
+
         .checkbox-wrapper input[type="checkbox"] {
             margin-top: 3px;
             width: 20px;
             height: 20px;
             flex-shrink: 0;
-            accent-color: var(--primary-color);
             cursor: pointer;
+            accent-color: var(--primary-color);
         }
 
         .checkbox-wrapper label {
             margin-bottom: 0;
             font-weight: 400;
+            color: var(--text-muted);
             font-size: 14px;
+            line-height: 1.5;
             cursor: pointer;
-            color: var(--text-light);
-            line-height: 1.4;
         }
 
+        /* Buttons */
         button {
             width: 100%;
-            padding: 16px; /* Taller buttons for mobile */
+            padding: 16px;
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
-            margin-top: 12px;
-            touch-action: manipulation; /* optimize touch */
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 16px;
+            letter-spacing: 0.01em;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Primary Buttons */
         #btnHabeas, #btnGenerar {
             background-color: var(--primary-color);
             color: white;
-            box-shadow: 0 4px 6px rgba(10, 74, 130, 0.2);
+            box-shadow: 0 4px 12px rgba(17, 34, 64, 0.2);
         }
 
         #btnHabeas:hover, #btnGenerar:hover {
             background-color: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 8px rgba(10, 74, 130, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(17, 34, 64, 0.25);
         }
         
         #btnHabeas:active, #btnGenerar:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 4px rgba(10, 74, 130, 0.2);
+            transform: translateY(0);
         }
 
+        /* Success Button */
         #btnCopiar {
             background-color: var(--success-color);
             color: white;
-            margin-top: 10px;
-            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.2);
+            margin-top: 12px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
         }
 
         #btnCopiar:hover {
-            background-color: #218838;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 8px rgba(40, 167, 69, 0.25);
+            background-color: var(--success-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
         }
 
+        /* Secondary/Edit Button */
         #btnEditar {
             background-color: transparent;
-            border: 2px solid #e0e0e0;
-            color: var(--text-light);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
             margin-top: 16px;
         }
 
         #btnEditar:hover {
-            border-color: #ccc;
-            background-color: #f8f9fa;
-            color: var(--text-color);
+            color: var(--text-main);
+            border-color: var(--text-muted);
+            background-color: #fff;
         }
 
+        /* WhatsApp Button */
         #whatsLink button {
             background-color: var(--whatsapp-color);
             color: white;
-            margin-top: 24px;
+            margin-top: 28px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            font-size: 17px;
-            box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);
+            gap: 12px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
 
         #whatsLink button:hover {
             background-color: #1ebc57;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 8px rgba(37, 211, 102, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(37, 211, 102, 0.4);
         }
 
         #whatsLink {
@@ -238,172 +287,173 @@
             display: block;
         }
 
-        .hidden {
-            display: none !important;
-        }
-
+        /* Success Message */
         .success-message {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: #ECFDF5;
+            color: #065F46;
             padding: 16px;
-            border-radius: 8px;
-            margin-top: 20px;
+            border-radius: var(--radius-md);
+            margin-top: 24px;
             text-align: center;
             font-weight: 500;
-            border: 1px solid #c3e6cb;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            border: 1px solid #A7F3D0;
+            animation: slideUpFade 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         /* Mobile Optimization */
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             body {
+                background-color: #fff;
                 padding: 0;
-                background-color: white; /* Full white on mobile looks cleaner */
             }
             
             .container {
                 box-shadow: none;
+                border: none;
                 border-radius: 0;
-                padding: 24px;
+                padding: 32px 24px;
                 margin-top: 0;
                 margin-bottom: 0;
                 max-width: 100%;
             }
 
             h1 {
-                font-size: 26px;
-                margin-top: 10px;
+                font-size: 28px;
+                margin-top: 12px;
             }
 
             .subtitle {
                 font-size: 15px;
-                margin-bottom: 25px;
-            }
-            
-            /* Improve spacing for touch */
-            .form-group {
-                margin-bottom: 24px;
+                margin-bottom: 32px;
             }
             
             button {
-                padding: 18px; /* Even easier to tap */
+                padding: 18px; /* Large touch target */
+                border-radius: var(--radius-lg); /* Softer on mobile */
             }
             
-            select, input[type="text"] {
-                padding: 14px 12px;
+            /* Full width inputs on mobile feel better */
+            select, input[type="text"], input[type="date"], textarea {
+                font-size: 16px;
+                padding: 16px;
+                background-color: #F9FAFB; /* Slight contrast on white mobile bg */
+            }
+            
+            /* Less gap on mobile */
+            .form-group {
+                margin-bottom: 20px;
             }
         }
-</style>
+    </style>
 </head>
 <body>
 
 <div class="container">
-<h1>VISA PARA TODOS</h1>
+    <h1>VISA PARA TODOS</h1>
     <p class="subtitle">Asesoría sencilla, rápida y por WhatsApp.</p>
 
     <!-- Intro Section -->
-<div class="section">
+    <div class="section">
         <div class="checkbox-wrapper">
             <input type="checkbox" id="habeas" />
             <label for="habeas">Acepto que la información que escriba será enviada por WhatsApp y no se almacena en esta página.</label>
         </div>
-<button id="btnHabeas">Continuar</button>
-</div>
+        <button id="btnHabeas">Continuar</button>
+    </div>
 
     <!-- Form Section -->
-<div id="formSection" class="hidden section">
-<h3>Formulario rápido</h3>
-
+    <div id="formSection" class="hidden section">
+        <h3>Formulario rápido</h3>
+        
         <div class="form-group">
             <label for="visa">¿Qué necesitas?</label>
-<select id="visa">
-  <option value="Estados Unidos">Visa Estados Unidos</option>
-  <option value="Canadá">Visa Canadá</option>
-  <option value="Inglaterra (UK)">Visa Inglaterra (UK)</option>
-  <option value="Australia">Visa Australia</option>
-  <option value="Europa (trabajo/pareja/estudio)">Visa Europa (trabajo/pareja/estudio)</option>
-  <option value="Asesoria30">Asesoría de 30 minutos</option>
-  <option value="SoloWhatsApp">Solo quiero tu WhatsApp</option>
+            <select id="visa">
+                <option value="Estados Unidos">Visa Estados Unidos</option>
+                <option value="Canadá">Visa Canadá</option>
+                <option value="Inglaterra (UK)">Visa Inglaterra (UK)</option>
+                <option value="Australia">Visa Australia</option>
+                <option value="Europa (trabajo/pareja/estudio)">Visa Europa (trabajo/pareja/estudio)</option>
+                <option value="Asesoria30">Asesoría de 30 minutos</option>
+                <option value="SoloWhatsApp">Solo quiero tu WhatsApp</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="acompanantes">¿Viajarás con acompañantes?</label>
-<select id="acompanantes">
-  <option value="No">No</option>
-  <option value="Sí">Sí</option>
+            <select id="acompanantes">
+                <option value="No">No</option>
+                <option value="Sí">Sí</option>
             </select>
         </div>
 
         <div id="numAcompanantesSection" class="hidden form-group">
             <label for="numAcompanantes">Número de acompañantes:</label>
-<select id="numAcompanantes">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4+">4+</option>
+            <select id="numAcompanantes">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4+">4+</option>
             </select>
-</div>
+        </div>
 
         <div class="form-group">
             <label for="proposito">Propósito del viaje:</label>
-<select id="proposito">
-  <option value="Turismo">Turismo</option>
-  <option value="Visitar familia">Visitar familia</option>
-  <option value="Trabajo temporal">Trabajo temporal</option>
-  <option value="Estudiante">Estudiante</option>
-  <option value="Reagrupación familiar">Reagrupación familiar</option>
-  <option value="Esposo/Esposa/Pareja">Esposo / Esposa / Pareja</option>
-  <option value="Au Pair">Au Pair</option>
-  <option value="Nómada digital">Nómada digital</option>
-  <option value="Otro">Otro</option>
+            <select id="proposito">
+                <option value="Turismo">Turismo</option>
+                <option value="Visitar familia">Visitar familia</option>
+                <option value="Trabajo temporal">Trabajo temporal</option>
+                <option value="Estudiante">Estudiante</option>
+                <option value="Reagrupación familiar">Reagrupación familiar</option>
+                <option value="Esposo/Esposa/Pareja">Esposo / Esposa / Pareja</option>
+                <option value="Au Pair">Au Pair</option>
+                <option value="Nómada digital">Nómada digital</option>
+                <option value="Otro">Otro</option>
             </select>
         </div>
 
         <div id="paisSection" class="hidden form-group">
             <label for="pais">País destino (Europa):</label>
-<select id="pais">
-  <option value="España">España</option>
-  <option value="Francia">Francia</option>
-  <option value="Italia">Italia</option>
-  <option value="Alemania">Alemania</option>
-  <option value="Portugal">Portugal</option>
-  <option value="Países Bajos">Países Bajos</option>
-  <option value="Otro">Otro</option>
+            <select id="pais">
+                <option value="España">España</option>
+                <option value="Francia">Francia</option>
+                <option value="Italia">Italia</option>
+                <option value="Alemania">Alemania</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Países Bajos">Países Bajos</option>
+                <option value="Otro">Otro</option>
             </select>
-</div>
+        </div>
 
         <div class="form-group">
             <label for="fecha">Fecha estimada de viaje:</label>
             <input type="date" id="fecha">
         </div>
 
-<button id="btnGenerar">Generar mensaje</button>
-</div>
+        <button id="btnGenerar">Generar mensaje</button>
+    </div>
 
     <!-- Message Section -->
-<div id="mensajeSection" class="hidden section">
-<h3>Tu mensaje</h3>
+    <div id="mensajeSection" class="hidden section">
+        <h3>Tu mensaje</h3>
         <div class="form-group">
-<textarea id="mensaje" readonly></textarea>
+            <textarea id="mensaje" readonly></textarea>
         </div>
 
-        <p style="text-align: center; margin-bottom: 16px;"><strong>¿Es todo lo anterior correcto?</strong></p>
-<button id="btnCopiar">Sí, está correcto</button>
-<button id="btnEditar">No, quiero corregir</button>
+        <p style="text-align: center; margin-bottom: 16px; color: var(--text-main);"><strong>¿Es todo lo anterior correcto?</strong></p>
+        <button id="btnCopiar">Sí, está correcto</button>
+        <button id="btnEditar">No, quiero corregir</button>
 
         <div id="copiadoMsg" class="hidden success-message">
             Mensaje copiado ✔️ Ahora abre tu WhatsApp y pégalo.
         </div>
 
-<a id="whatsLink" class="hidden" href="#" target="_blank">
-<button>Abrir WhatsApp</button>
-</a>
+        <a id="whatsLink" class="hidden" href="#" target="_blank">
+            <button>Abrir WhatsApp</button>
+        </a>
     </div>
 </div>
 
@@ -424,15 +474,15 @@ const copiadoMsg = document.getElementById('copiadoMsg');
 const whatsLink = document.getElementById('whatsLink');
 
 btnHabeas.onclick = () => {
- if (!habeas.checked) return alert("Debes aceptar el Habeas Data.");
- formSection.classList.remove('hidden');
+  if (!habeas.checked) return alert("Debes aceptar el Habeas Data.");
+  formSection.classList.remove('hidden');
   // Hide initial section optionally, but per request 'DO NOT change flow' I keep it, 
   // though UI wise it might be nice to hide the habeas button after click. 
   // I will just reveal the next section as per original logic.
 };
 
 acompanantes.onchange = () => {
- numAcompanantesSection.classList.toggle('hidden', acomp.value === 'No');
+  numAcompanantesSection.classList.toggle('hidden', acomp.value === 'No');
 };
 
 visa.onchange = () => {
@@ -441,46 +491,46 @@ visa.onchange = () => {
 };
 
 btnGenerar.onclick = () => {
- let text = `Hola, Visa Para Todos.%0A%0A`;
+  let text = `Hola, Visa Para Todos.%0A%0A`;
 
- if (visa.value === 'Asesoria30') {
-   text += `Quiero agendar una asesoría de 30 minutos.%0A`;
-   text += `Tema de la consulta: ${proposito.value}%0A`;
-   text += `Fecha estimada para la asesoría: ${fecha.value}%0A%0A`;
-   text += `Por favor indícame disponibilidad y costo.`;
- } else if (visa.value === 'SoloWhatsApp') {
-   text += `Solo quiero obtener tu número de WhatsApp para hacer una consulta rápida.%0A%0A`;
-   text += `Mi pregunta es sobre: ${proposito.value}`;
- } else {
-   text += `- Tipo de solicitud: ${visa.value}%0A`;
-   text += `- Propósito del viaje: ${proposito.value}%0A`;
-   if (visa.value.includes('Europa')) text += `- País destino: ${pais.value}%0A`;
-   text += `- Acompañantes: ${acompanantes.value}%0A`;
-   if (acompanantes.value === 'Sí') text += `  - Número de acompañantes: ${numAcompanantes.value}%0A`;
-   text += `- Fecha estimada: ${fecha.value}%0A%0A`;
-   text += `Quedo atento(a) para que me indiques los documentos que necesito.`;
- }
+  if (visa.value === 'Asesoria30') {
+    text += `Quiero agendar una asesoría de 30 minutos.%0A`;
+    text += `Tema de la consulta: ${proposito.value}%0A`;
+    text += `Fecha estimada para la asesoría: ${fecha.value}%0A%0A`;
+    text += `Por favor indícame disponibilidad y costo.`;
+  } else if (visa.value === 'SoloWhatsApp') {
+    text += `Solo quiero obtener tu número de WhatsApp para hacer una consulta rápida.%0A%0A`;
+    text += `Mi pregunta es sobre: ${proposito.value}`;
+  } else {
+    text += `- Tipo de solicitud: ${visa.value}%0A`;
+    text += `- Propósito del viaje: ${proposito.value}%0A`;
+    if (visa.value.includes('Europa')) text += `- País destino: ${pais.value}%0A`;
+    text += `- Acompañantes: ${acompanantes.value}%0A`;
+    if (acompanantes.value === 'Sí') text += `  - Número de acompañantes: ${numAcompanantes.value}%0A`;
+    text += `- Fecha estimada: ${fecha.value}%0A%0A`;
+    text += `Quedo atento(a) para que me indiques los documentos que necesito.`;
+  }
 
   // Decode properly
   mensaje.value = decodeURIComponent(text.replace(/%0A/g, "\n"));
- mensajeSection.classList.remove('hidden');
+  mensajeSection.classList.remove('hidden');
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 };
 
 btnCopiar.onclick = async () => {
   try {
- await navigator.clipboard.writeText(mensaje.value);
- copiadoMsg.classList.remove('hidden');
- whatsLink.href = `https://wa.me/573001234567`; // REEMPLAZAR CON TU NÚMERO
- whatsLink.classList.remove('hidden');
+    await navigator.clipboard.writeText(mensaje.value);
+    copiadoMsg.classList.remove('hidden');
+    whatsLink.href = `https://wa.me/573001234567`; // REEMPLAZAR CON TU NÚMERO
+    whatsLink.classList.remove('hidden');
   } catch (err) {
     alert('No se pudo copiar el texto. Por favor cópialo manualmente.');
   }
 };
 
 btnEditar.onclick = () => {
- mensajeSection.classList.add('hidden');
- copiadoMsg.classList.add('hidden');
+  mensajeSection.classList.add('hidden');
+  copiadoMsg.classList.add('hidden');
 };
 </script>
 </body>

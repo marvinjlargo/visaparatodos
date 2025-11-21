@@ -107,7 +107,7 @@ btnCopiar.onclick = async () => {
     try {
         await navigator.clipboard.writeText(mensaje.value);
         copiadoMsg.classList.remove('hidden');
-        whatsLink.href = `https://wa.me/573001234567`; // REEMPLAZAR CON TU NÚMERO
+        whatsLink.href = `https://wa.me/12899216257`; // REEMPLAZAR CON TU NÚMERO
         whatsLink.classList.remove('hidden');
     } catch (err) {
         alert('No se pudo copiar el texto. Por favor cópialo manualmente.');

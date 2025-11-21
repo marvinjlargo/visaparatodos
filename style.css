@@ -168,6 +168,72 @@ h3 {
     display: block;
 }
 
+/* === PRICING SECTION === */
+.pricing-section {
+    padding: 32px;
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pricing-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 16px;
+    background-color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-card:last-child {
+    margin-bottom: 0;
+}
+
+.pricing-card.highlight {
+    border: 2px solid var(--accent-color);
+    background-color: #F0F9FF;
+}
+
+.pricing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pricing-header h4 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.pricing-header .price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+.pricing-card p {
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.pricing-subtext {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.pricing-hook {
+    margin-top: 12px !important;
+    color: var(--primary-color) !important;
+    font-weight: 600;
+    font-size: 14px !important;
+}
+
 /* === STEPS SECTION === */
 .steps-section {
     padding: 32px;
@@ -422,6 +488,7 @@ button {
     
     .hero-section { padding: 32px 24px; }
     .services-section { padding: 24px; }
+    .pricing-section { padding: 24px; }
     .steps-section { padding: 24px; }
     .tool-section { padding: 24px 16px; } /* Less padding for form area on mobile */
     

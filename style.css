@@ -1,0 +1,341 @@
+:root {
+    /* World-Class Palette */
+    --primary-color: #112240; /* Deep Navy Blue - Premium & Trust */
+    --primary-hover: #0a1930;
+    
+    --accent-color: #0056b3; /* Bright Blue for active states */
+    
+    --success-color: #10B981; /* Modern Emerald Green */
+    --success-hover: #059669;
+    
+    --whatsapp-color: #25D366;
+    
+    --bg-page: #F3F4F6; /* Cool Gray Background */
+    --bg-card: #FFFFFF;
+    
+    --text-main: #1f2937; /* Gray 900 */
+    --text-muted: #6b7280; /* Gray 500 */
+    
+    --border-color: #E5E7EB; /* Gray 200 */
+    --border-focus: #112240;
+    
+    --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    --shadow-input: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main Container as a Floating Card */
+.container {
+    background: var(--bg-card);
+    padding: 48px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    width: 100%;
+    max-width: 540px; /* Optically better width for reading */
+    margin-top: 40px;
+    margin-bottom: 60px;
+    border: 1px solid rgba(255,255,255,0.8); /* Subtle highlight */
+}
+
+/* Typography */
+h1 {
+    font-size: 32px;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 0;
+    font-weight: 700;
+    letter-spacing: -0.03em; /* Tighter tracking for headlines */
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h3 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Sections & Animation */
+.section {
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-main);
+    font-size: 14px;
+    letter-spacing: 0.01em;
+}
+
+select, input[type="text"], input[type="date"], textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 16px; /* iOS Zoom prevention */
+    font-family: var(--font-family);
+    background-color: #fff;
+    color: var(--text-main);
+    box-shadow: var(--shadow-input);
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    line-height: 1.5;
+}
+
+/* Select Custom Arrow */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 48px;
+}
+
+/* Focus States */
+select:focus, input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(17, 34, 64, 0.1); /* Soft ring */
+}
+
+textarea {
+    resize: vertical;
+    min-height: 140px;
+    background-color: #FAFAFA;
+}
+
+/* Custom Checkbox */
+.checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+    background: #F9FAFB; /* Lighter gray */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.checkbox-wrapper:hover {
+    background: #F3F4F6;
+    border-color: #D1D5DB;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    margin-top: 3px;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-wrapper label {
+    margin-bottom: 0;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 16px;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Primary Buttons */
+#btnHabeas, #btnGenerar {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(17, 34, 64, 0.2);
+}
+
+#btnHabeas:hover, #btnGenerar:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(17, 34, 64, 0.25);
+}
+
+#btnHabeas:active, #btnGenerar:active {
+    transform: translateY(0);
+}
+
+/* Success Button */
+#btnCopiar {
+    background-color: var(--success-color);
+    color: white;
+    margin-top: 12px;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+#btnCopiar:hover {
+    background-color: var(--success-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+}
+
+/* Secondary/Edit Button */
+#btnEditar {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    margin-top: 16px;
+}
+
+#btnEditar:hover {
+    color: var(--text-main);
+    border-color: var(--text-muted);
+    background-color: #fff;
+}
+
+/* WhatsApp Button */
+#whatsLink button {
+    background-color: var(--whatsapp-color);
+    color: white;
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+#whatsLink button:hover {
+    background-color: #1ebc57;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(37, 211, 102, 0.4);
+}
+
+#whatsLink {
+    text-decoration: none;
+    display: block;
+}
+
+/* Success Message */
+.success-message {
+    background-color: #ECFDF5;
+    color: #065F46;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    margin-top: 24px;
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid #A7F3D0;
+    animation: slideUpFade 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Mobile Optimization */
+@media (max-width: 640px) {
+    body {
+        background-color: #fff;
+        padding: 0;
+    }
+    
+    .container {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 32px 24px;
+        margin-top: 0;
+        margin-bottom: 0;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-top: 12px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        margin-bottom: 32px;
+    }
+    
+    button {
+        padding: 18px; /* Large touch target */
+        border-radius: var(--radius-lg); /* Softer on mobile */
+    }
+    
+    /* Full width inputs on mobile feel better */
+    select, input[type="text"], input[type="date"], textarea {
+        font-size: 16px;
+        padding: 16px;
+        background-color: #F9FAFB; /* Slight contrast on white mobile bg */
+    }
+    
+    /* Less gap on mobile */
+    .form-group {
+        margin-bottom: 20px;
+    }
+}
+

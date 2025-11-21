@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Visa Para Todos | Asesoría de Visas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
+<style>
         :root {
             --primary-color: #0A4A82;
             --primary-hover: #083966;
@@ -25,6 +25,7 @@
 
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -37,7 +38,7 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: flex-start; /* Better for mobile scrolling than center */
         }
 
         .container {
@@ -48,6 +49,7 @@
             width: 100%;
             max-width: 600px;
             margin-top: 20px;
+            margin-bottom: 40px; /* Space at bottom for scrolling */
             transition: transform 0.3s ease;
         }
 
@@ -58,6 +60,7 @@
             margin-bottom: 10px;
             margin-top: 0;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .subtitle {
@@ -88,18 +91,19 @@
             margin-bottom: 8px;
             font-weight: 500;
             color: var(--text-color);
+            font-size: 15px;
         }
 
-        select, input[type="text"], textarea {
+        select, input[type="text"], input[type="date"], textarea {
             width: 100%;
-            padding: 12px 16px;
+            padding: 14px 16px; /* Larger touch target */
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 16px; /* Prevents zoom on iOS */
             font-family: var(--font-family);
             transition: border-color 0.2s, box-shadow 0.2s;
             background-color: #fff;
-            appearance: none; /* Custom select arrow styling would go here usually */
+            appearance: none;
         }
 
         /* Custom arrow for selects */
@@ -107,10 +111,11 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
-            background-size: 16px;
+            background-size: 20px;
+            padding-right: 40px; /* Avoid text overlapping arrow */
         }
 
-        select:focus, input[type="text"]:focus, textarea:focus {
+        select:focus, input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(10, 74, 130, 0.1);
@@ -133,12 +138,14 @@
             border-radius: 8px;
             margin-bottom: 20px;
             cursor: pointer;
+            user-select: none;
         }
         
         .checkbox-wrapper input[type="checkbox"] {
-            margin-top: 4px;
-            width: 18px;
-            height: 18px;
+            margin-top: 3px;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
             accent-color: var(--primary-color);
             cursor: pointer;
         }
@@ -149,48 +156,57 @@
             font-size: 14px;
             cursor: pointer;
             color: var(--text-light);
+            line-height: 1.4;
         }
 
         button {
             width: 100%;
-            padding: 14px;
+            padding: 16px; /* Taller buttons for mobile */
             border: none;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            margin-top: 10px;
+            margin-top: 12px;
+            touch-action: manipulation; /* optimize touch */
         }
 
         #btnHabeas, #btnGenerar {
             background-color: var(--primary-color);
             color: white;
+            box-shadow: 0 4px 6px rgba(10, 74, 130, 0.2);
         }
 
         #btnHabeas:hover, #btnGenerar:hover {
             background-color: var(--primary-hover);
             transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 6px 8px rgba(10, 74, 130, 0.25);
+        }
+        
+        #btnHabeas:active, #btnGenerar:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(10, 74, 130, 0.2);
         }
 
         #btnCopiar {
             background-color: var(--success-color);
             color: white;
             margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.2);
         }
 
         #btnCopiar:hover {
             background-color: #218838;
             transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 6px 8px rgba(40, 167, 69, 0.25);
         }
 
         #btnEditar {
             background-color: transparent;
             border: 2px solid #e0e0e0;
             color: var(--text-light);
-            margin-top: 12px;
+            margin-top: 16px;
         }
 
         #btnEditar:hover {
@@ -202,21 +218,24 @@
         #whatsLink button {
             background-color: var(--whatsapp-color);
             color: white;
-            margin-top: 20px;
+            margin-top: 24px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-size: 17px;
+            box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);
         }
 
         #whatsLink button:hover {
             background-color: #1ebc57;
             transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 6px 8px rgba(37, 211, 102, 0.25);
         }
 
         #whatsLink {
             text-decoration: none;
+            display: block;
         }
 
         .hidden {
@@ -240,121 +259,151 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .container {
-                padding: 24px;
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            body {
+                padding: 0;
+                background-color: white; /* Full white on mobile looks cleaner */
             }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 24px;
+                margin-top: 0;
+                margin-bottom: 0;
+                max-width: 100%;
+            }
+
             h1 {
-                font-size: 24px;
+                font-size: 26px;
+                margin-top: 10px;
+            }
+
+            .subtitle {
+                font-size: 15px;
+                margin-bottom: 25px;
+            }
+            
+            /* Improve spacing for touch */
+            .form-group {
+                margin-bottom: 24px;
+            }
+            
+            button {
+                padding: 18px; /* Even easier to tap */
+            }
+            
+            select, input[type="text"] {
+                padding: 14px 12px;
             }
         }
-    </style>
+</style>
 </head>
 <body>
 
 <div class="container">
-    <h1>VISA PARA TODOS</h1>
+<h1>VISA PARA TODOS</h1>
     <p class="subtitle">Asesoría sencilla, rápida y por WhatsApp.</p>
 
     <!-- Intro Section -->
-    <div class="section">
+<div class="section">
         <div class="checkbox-wrapper">
             <input type="checkbox" id="habeas" />
             <label for="habeas">Acepto que la información que escriba será enviada por WhatsApp y no se almacena en esta página.</label>
         </div>
-        <button id="btnHabeas">Continuar</button>
-    </div>
+<button id="btnHabeas">Continuar</button>
+</div>
 
     <!-- Form Section -->
-    <div id="formSection" class="hidden section">
-        <h3>Formulario rápido</h3>
-        
+<div id="formSection" class="hidden section">
+<h3>Formulario rápido</h3>
+
         <div class="form-group">
             <label for="visa">¿Qué necesitas?</label>
-            <select id="visa">
-                <option value="Estados Unidos">Visa Estados Unidos</option>
-                <option value="Canadá">Visa Canadá</option>
-                <option value="Inglaterra (UK)">Visa Inglaterra (UK)</option>
-                <option value="Australia">Visa Australia</option>
-                <option value="Europa (trabajo/pareja/estudio)">Visa Europa (trabajo/pareja/estudio)</option>
-                <option value="Asesoria30">Asesoría de 30 minutos</option>
-                <option value="SoloWhatsApp">Solo quiero tu WhatsApp</option>
+<select id="visa">
+  <option value="Estados Unidos">Visa Estados Unidos</option>
+  <option value="Canadá">Visa Canadá</option>
+  <option value="Inglaterra (UK)">Visa Inglaterra (UK)</option>
+  <option value="Australia">Visa Australia</option>
+  <option value="Europa (trabajo/pareja/estudio)">Visa Europa (trabajo/pareja/estudio)</option>
+  <option value="Asesoria30">Asesoría de 30 minutos</option>
+  <option value="SoloWhatsApp">Solo quiero tu WhatsApp</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="acompanantes">¿Viajarás con acompañantes?</label>
-            <select id="acompanantes">
-                <option value="No">No</option>
-                <option value="Sí">Sí</option>
+<select id="acompanantes">
+  <option value="No">No</option>
+  <option value="Sí">Sí</option>
             </select>
         </div>
 
         <div id="numAcompanantesSection" class="hidden form-group">
             <label for="numAcompanantes">Número de acompañantes:</label>
-            <select id="numAcompanantes">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4+">4+</option>
+<select id="numAcompanantes">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4+">4+</option>
             </select>
-        </div>
+</div>
 
         <div class="form-group">
             <label for="proposito">Propósito del viaje:</label>
-            <select id="proposito">
-                <option value="Turismo">Turismo</option>
-                <option value="Visitar familia">Visitar familia</option>
-                <option value="Trabajo temporal">Trabajo temporal</option>
-                <option value="Estudiante">Estudiante</option>
-                <option value="Reagrupación familiar">Reagrupación familiar</option>
-                <option value="Esposo/Esposa/Pareja">Esposo / Esposa / Pareja</option>
-                <option value="Au Pair">Au Pair</option>
-                <option value="Nómada digital">Nómada digital</option>
-                <option value="Otro">Otro</option>
+<select id="proposito">
+  <option value="Turismo">Turismo</option>
+  <option value="Visitar familia">Visitar familia</option>
+  <option value="Trabajo temporal">Trabajo temporal</option>
+  <option value="Estudiante">Estudiante</option>
+  <option value="Reagrupación familiar">Reagrupación familiar</option>
+  <option value="Esposo/Esposa/Pareja">Esposo / Esposa / Pareja</option>
+  <option value="Au Pair">Au Pair</option>
+  <option value="Nómada digital">Nómada digital</option>
+  <option value="Otro">Otro</option>
             </select>
         </div>
 
         <div id="paisSection" class="hidden form-group">
             <label for="pais">País destino (Europa):</label>
-            <select id="pais">
-                <option value="España">España</option>
-                <option value="Francia">Francia</option>
-                <option value="Italia">Italia</option>
-                <option value="Alemania">Alemania</option>
-                <option value="Portugal">Portugal</option>
-                <option value="Países Bajos">Países Bajos</option>
-                <option value="Otro">Otro</option>
+<select id="pais">
+  <option value="España">España</option>
+  <option value="Francia">Francia</option>
+  <option value="Italia">Italia</option>
+  <option value="Alemania">Alemania</option>
+  <option value="Portugal">Portugal</option>
+  <option value="Países Bajos">Países Bajos</option>
+  <option value="Otro">Otro</option>
             </select>
-        </div>
+</div>
 
         <div class="form-group">
-            <label for="fecha">Fecha estimada de viaje (mes/año):</label>
-            <input type="text" id="fecha" placeholder="Ej: Abril 2026">
+            <label for="fecha">Fecha estimada de viaje:</label>
+            <input type="date" id="fecha">
         </div>
 
-        <button id="btnGenerar">Generar mensaje</button>
-    </div>
+<button id="btnGenerar">Generar mensaje</button>
+</div>
 
     <!-- Message Section -->
-    <div id="mensajeSection" class="hidden section">
-        <h3>Tu mensaje</h3>
+<div id="mensajeSection" class="hidden section">
+<h3>Tu mensaje</h3>
         <div class="form-group">
-            <textarea id="mensaje" readonly></textarea>
+<textarea id="mensaje" readonly></textarea>
         </div>
 
         <p style="text-align: center; margin-bottom: 16px;"><strong>¿Es todo lo anterior correcto?</strong></p>
-        <button id="btnCopiar">Sí, está correcto</button>
-        <button id="btnEditar">No, quiero corregir</button>
+<button id="btnCopiar">Sí, está correcto</button>
+<button id="btnEditar">No, quiero corregir</button>
 
         <div id="copiadoMsg" class="hidden success-message">
             Mensaje copiado ✔️ Ahora abre tu WhatsApp y pégalo.
         </div>
 
-        <a id="whatsLink" class="hidden" href="#" target="_blank">
-            <button>Abrir WhatsApp</button>
-        </a>
+<a id="whatsLink" class="hidden" href="#" target="_blank">
+<button>Abrir WhatsApp</button>
+</a>
     </div>
 </div>
 
@@ -375,15 +424,15 @@ const copiadoMsg = document.getElementById('copiadoMsg');
 const whatsLink = document.getElementById('whatsLink');
 
 btnHabeas.onclick = () => {
-  if (!habeas.checked) return alert("Debes aceptar el Habeas Data.");
-  formSection.classList.remove('hidden');
+ if (!habeas.checked) return alert("Debes aceptar el Habeas Data.");
+ formSection.classList.remove('hidden');
   // Hide initial section optionally, but per request 'DO NOT change flow' I keep it, 
   // though UI wise it might be nice to hide the habeas button after click. 
   // I will just reveal the next section as per original logic.
 };
 
 acompanantes.onchange = () => {
-  numAcompanantesSection.classList.toggle('hidden', acomp.value === 'No');
+ numAcompanantesSection.classList.toggle('hidden', acomp.value === 'No');
 };
 
 visa.onchange = () => {
@@ -392,46 +441,46 @@ visa.onchange = () => {
 };
 
 btnGenerar.onclick = () => {
-  let text = `Hola, Visa Para Todos.%0A%0A`;
+ let text = `Hola, Visa Para Todos.%0A%0A`;
 
-  if (visa.value === 'Asesoria30') {
-    text += `Quiero agendar una asesoría de 30 minutos.%0A`;
-    text += `Tema de la consulta: ${proposito.value}%0A`;
-    text += `Fecha estimada para la asesoría: ${fecha.value}%0A%0A`;
-    text += `Por favor indícame disponibilidad y costo.`;
-  } else if (visa.value === 'SoloWhatsApp') {
-    text += `Solo quiero obtener tu número de WhatsApp para hacer una consulta rápida.%0A%0A`;
-    text += `Mi pregunta es sobre: ${proposito.value}`;
-  } else {
-    text += `- Tipo de solicitud: ${visa.value}%0A`;
-    text += `- Propósito del viaje: ${proposito.value}%0A`;
-    if (visa.value.includes('Europa')) text += `- País destino: ${pais.value}%0A`;
-    text += `- Acompañantes: ${acompanantes.value}%0A`;
-    if (acompanantes.value === 'Sí') text += `  - Número de acompañantes: ${numAcompanantes.value}%0A`;
-    text += `- Fecha estimada: ${fecha.value}%0A%0A`;
-    text += `Quedo atento(a) para que me indiques los documentos que necesito.`;
-  }
+ if (visa.value === 'Asesoria30') {
+   text += `Quiero agendar una asesoría de 30 minutos.%0A`;
+   text += `Tema de la consulta: ${proposito.value}%0A`;
+   text += `Fecha estimada para la asesoría: ${fecha.value}%0A%0A`;
+   text += `Por favor indícame disponibilidad y costo.`;
+ } else if (visa.value === 'SoloWhatsApp') {
+   text += `Solo quiero obtener tu número de WhatsApp para hacer una consulta rápida.%0A%0A`;
+   text += `Mi pregunta es sobre: ${proposito.value}`;
+ } else {
+   text += `- Tipo de solicitud: ${visa.value}%0A`;
+   text += `- Propósito del viaje: ${proposito.value}%0A`;
+   if (visa.value.includes('Europa')) text += `- País destino: ${pais.value}%0A`;
+   text += `- Acompañantes: ${acompanantes.value}%0A`;
+   if (acompanantes.value === 'Sí') text += `  - Número de acompañantes: ${numAcompanantes.value}%0A`;
+   text += `- Fecha estimada: ${fecha.value}%0A%0A`;
+   text += `Quedo atento(a) para que me indiques los documentos que necesito.`;
+ }
 
   // Decode properly
   mensaje.value = decodeURIComponent(text.replace(/%0A/g, "\n"));
-  mensajeSection.classList.remove('hidden');
+ mensajeSection.classList.remove('hidden');
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 };
 
 btnCopiar.onclick = async () => {
   try {
-    await navigator.clipboard.writeText(mensaje.value);
-    copiadoMsg.classList.remove('hidden');
-    whatsLink.href = `https://wa.me/573001234567`; // REEMPLAZAR CON TU NÚMERO
-    whatsLink.classList.remove('hidden');
+ await navigator.clipboard.writeText(mensaje.value);
+ copiadoMsg.classList.remove('hidden');
+ whatsLink.href = `https://wa.me/573001234567`; // REEMPLAZAR CON TU NÚMERO
+ whatsLink.classList.remove('hidden');
   } catch (err) {
     alert('No se pudo copiar el texto. Por favor cópialo manualmente.');
   }
 };
 
 btnEditar.onclick = () => {
-  mensajeSection.classList.add('hidden');
-  copiadoMsg.classList.add('hidden');
+ mensajeSection.classList.add('hidden');
+ copiadoMsg.classList.add('hidden');
 };
 </script>
 </body>
